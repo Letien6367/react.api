@@ -6,7 +6,7 @@ import axios from 'axios'
 import './style.scss'
 
 async function getRamdomCatURL() {
-  const apikey = 'live_abulHayZU0WrnHDun8A2oIW6HuG6qXPYkGuV6Q1HMe1SY87w5xGZQOwprFWxUSBh'
+  const apikey = ''
   const response = await axios.get("https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=beng&api_key=" + apikey);
   return response.data[0].url;
 }
