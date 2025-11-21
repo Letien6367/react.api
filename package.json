@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@fortawesome/react-fontawesome": "^3.1.0",
+    "react-fontawesome": "^1.7.1",
+    "react-router-dom": "^7.9.6"
+  },
+  "devDependencies": {
+    "sass": "^1.94.2"
+  }
+}
