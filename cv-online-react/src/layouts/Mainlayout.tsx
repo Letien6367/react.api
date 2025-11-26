@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 
@@ -12,9 +12,25 @@ library.add(fas, far, fab)
 
 function Mainlayout() {
     const [isShowMore, setIsShowMore] = useState(false)
+    useEffect(() => {
+        const path = window.location.pathname;
+        const routers = ["/", "/skills", "/projects"];
+        const index = routers.indexOf(path);
+        const active = [false, false, false];
+        if (index !== -1) {
+            active[index] = true;
+        }
+        setListActiveLink(active);
+    }, [])
     function toggleShowMore() {
         setIsShowMore(!isShowMore);
 
+    }
+    const originList = [false, false, false];
+    const [ListactiveLink, setListActiveLink] = useState(originList);
+    function activeLink(i:number) {
+        originList[i] = true;
+        setListActiveLink(originList);
     }
 
     return (
@@ -22,25 +38,25 @@ function Mainlayout() {
             <nav>
                 <ul className="nav">
                     <li className="nav-item">
-                        <Link to="/" className="nav-item-text ">
+                        <Link onClick={() =>activeLink(0)} to="/" className={`nav-item-text ${ListactiveLink[0] ? 'active' : ''}`}>
                             <FontAwesomeIcon className="icon" icon="fa-solid fa-user" />
                             <span>Thông tin</span>
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/skills" className="nav-item-text ">
+                        <Link onClick={() =>activeLink(1)} to="/skills" className={`nav-item-text ${ListactiveLink[1] ? 'active' : ''}`}>
                             <FontAwesomeIcon className="icon" icon="fa-solid fa-meteor" />
                             <span>Kỹ năng</span>
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/projects" className="nav-item-text ">
+                        <Link onClick={() =>activeLink(2)} to="/projects" className={`nav-item-text ${ListactiveLink[2] ? 'active' : ''}`}>
                             <FontAwesomeIcon className="icon" icon="fa-solid fa-list-check" />
                             <span>Dự án</span>
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="#" className="nav-item-text" onClick={() => toggleShowMore()}>
+                        <Link onClick={() => toggleShowMore()} to="#" className="nav-item-text">
                             <FontAwesomeIcon className="icon" icon="fa-solid fa-bars" />
                             <span>Xem thêm</span>
                         </Link>

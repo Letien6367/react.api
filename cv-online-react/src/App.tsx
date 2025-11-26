@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import PersonalInfo from './page/personal-info'
 import Skills from './page/skills'
 import Projects from './page/projects'
+import Notfound from './page/Notfuond'
 function App() {
     return (
         <>
@@ -14,6 +15,7 @@ function App() {
                         <Route path="/" element={<PersonalInfo />}></Route>
                         <Route path="/skills" element={<Skills/>}></Route>
                         <Route path="/projects" element={<Projects/>}></Route>
+                        <Route path="*" element={<Notfound />}></Route>
                     </Route>
                 </Routes>
             </BrowserRouter>
