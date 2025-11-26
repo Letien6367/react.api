@@ -19,6 +19,8 @@ nav{
         // thẻ li
         &-item{
             width: 25%;
+            text-align: center;
+
         }
         // thẻ a
         &-item-text{
@@ -35,7 +37,7 @@ nav{
                 font-size: 40px;
             }
             &.active{
-                color: rgb(47, 49, 110);
+                color: rgb(107, 112, 255);
                 transform: scale(1.2);
         }
     }
@@ -46,6 +48,7 @@ nav{
         position: relative;
         .img{
             max-width: 100% ;
+            max-height: 50%;
             object-fit: cover;
         }
         .background>img{
